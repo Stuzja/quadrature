@@ -5,7 +5,7 @@ require_relative "lib/quadrature/version"
 Gem::Specification.new do |spec|
   spec.name = "quadrature"
   spec.version = Quadrature::VERSION
-  spec.authors = ["Stuzja"]
+  spec.authors = ["Anna Shishkina, Sergey Gnatenko, Ivan Ovcharov, Anastasia Solonuhina, Plato Bobrovskiy, Demyan Bobrovskiy"]
   spec.email = ["ann.shishkina04@mail.ru"]
 
   spec.summary = "Ruby Gem for numerical integration."

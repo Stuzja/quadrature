@@ -14,7 +14,8 @@ class TestQuadrature < Test::Unit::TestCase
     assert true
   end
 
-  def test_rectangle_integral
+  #Тесты на метод прямоугольников
+  def test_rectangle_integral_one
     # Тестируем функцию на примере интегрирования функции f(x) = x^2 от 0 до 1
     func = proc { |x| x**2 }
     min_lim = 0.0
@@ -28,6 +29,62 @@ class TestQuadrature < Test::Unit::TestCase
     assert_in_delta(expected_result, result, 0.001)
   end
 
+  def test_rectangle_integral_two
+    # Определяем функцию для интегрирования
+    func = ->(x) { x ** 2 }
+
+    # Устанавливаем границы интегрирования и шаг
+    min_lim = 0
+    max_lim = 1
+    delta = 0.1
+
+    # Вычисляем ожидаемое значение интеграла
+    expected_result = 0.32835
+
+    # Вызываем функцию для вычисления интеграла
+    result = Quadrature.rectangle_integral(func, min_lim, max_lim, delta)
+
+    # Проверяем, что результат близок к ожидаемому значению
+    assert_in_delta expected_result, result, 0.1
+  end
+
+  def test_rectangle_integral_three
+    # Определяем функцию для интегрирования
+    func = ->(x) { Math.sin(x) }
+
+    # Устанавливаем границы интегрирования и шаг
+    min_lim = 0
+    max_lim = Math::PI
+    delta = 0.01
+
+    # Вычисляем ожидаемое значение интеграла
+    expected_result = 1.99999833
+
+    # Вызываем функцию для вычисления интеграла
+    result = Quadrature.rectangle_integral(func, min_lim, max_lim, delta)
+
+    # Проверяем, что результат близок к ожидаемому значению
+    assert_in_delta expected_result, result, 0.00001
+  end
+
+  def test_rectangle_integral_four
+    # Определяем функцию для интегрирования
+    func = ->(x) { Math.exp(x) }
+
+    # Устанавливаем границы интегрирования и шаг
+    min_lim = 0
+    max_lim = 2
+    delta = 0.001
+
+    # Вычисляем ожидаемое значение интеграла
+    expected_result = 6.3890561
+
+    # Вызываем функцию для вычисления интеграла
+    result = Quadrature.rectangle_integral(func, min_lim, max_lim, delta)
+
+    # Проверяем, что результат близок к ожидаемому значению
+    assert_in_delta expected_result, result, 0.01
+  end
 
   def test_trapezoidal_integration
     func = proc { |x| x**2 }
