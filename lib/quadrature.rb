@@ -44,4 +44,26 @@ module Quadrature
 
     sum
   end
+
+  # @param [Block] func
+  # @param [Float] min_lim
+  # @param [Float] max_lim
+  # @param [Float] delta
+  def self.simpson_integration(func, min_lim, max_lim, delta)
+    n = ((max_lim - min_lim) / delta).to_i
+    delta_x = (max_lim - min_lim) / n.to_f
+
+    sum = func.call(min_lim) + func.call(max_lim)
+    factor = 4
+
+    (1..(n-1)).each do |i|
+      x = min_lim + i * delta_x
+      sum += factor * func.call(x)
+      factor = 6 - factor
+    end
+
+    result = (delta_x / 3) * sum
+    result
+  end
+
 end

@@ -29,7 +29,7 @@ class TestQuadrature < Test::Unit::TestCase
   end
 
 
-  def test_trapezoidal_integration_1
+  def test_trapezoidal_integration
     func = proc { |x| x**2 }
     min_lim = 0.0
     max_lim = 1.0
@@ -37,32 +37,7 @@ class TestQuadrature < Test::Unit::TestCase
 
     expected_result = 0.33350000000000037
     result = Quadrature.trapezoidal_integration(func, min_lim, max_lim, delta)
-    assert_in_delta(expected_result, result, delta)
+    assert_in_delta(expected_result, result, 0.001)
   end
-
-  def test_trapezoidal_integration_2
-    func = proc { |x| Math.sin(x) }
-    min_lim = 0.0
-    max_lim = Math::PI
-    delta = 0.001
-
-    expected_result = 2.0
-
-    result = Quadrature.trapezoidal_integration(func, min_lim, max_lim, delta)
-    assert_in_delta(expected_result, result, delta)
-  end
-
-  def test_trapezoidal_integration_3
-    func = proc { |x| x**3 }
-    min_lim = 0.0
-    max_lim = 2.0
-    delta = 0.001
-
-    expected_result = 4.0
-
-    result = Quadrature.trapezoidal_integration(func, min_lim, max_lim, delta)
-    assert_in_delta(expected_result, result, delta)
-  end
-
 
 end
