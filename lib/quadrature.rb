@@ -34,7 +34,7 @@ module Quadrature
     n = ((max_lim - min_lim) / delta).ceil
     sum = 0.0
 
-    (1..n-1).each do |i|
+    (1..n - 1).each do |i|
       x = min_lim + i * delta
       sum += func.call(x)
     end
