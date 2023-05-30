@@ -97,4 +97,38 @@ class TestQuadrature < Test::Unit::TestCase
     assert_in_delta(expected_result, result, 0.001)
   end
 
+  # тесты Симпсона
+  def test_simpson_one
+    func = proc { |x| x**2 }
+    min_lim = 0.0
+    max_lim = 1.0
+    delta = 0.001
+
+    expected_result = 1.0/3.0
+    result = Quadrature.simpson_integration(func, min_lim, max_lim, delta)
+    assert_in_delta(expected_result, result, 0.001, )
+  end
+
+  def test_simpson_two
+    func = proc { |x| x**2 }
+    min_lim = 0.0
+    max_lim = 1.0
+    delta = 0.001
+
+    expected_result = 1.0/3.0
+    result = Quadrature.simpson_integration(func, min_lim, max_lim, delta)
+    assert_in_delta(expected_result, result, 0.001)
+  end
+
+  def test_simpson_three
+    func = proc { |x| Math.sin(x) }
+    min_lim = 0.0
+    max_lim = Math::PI
+    delta = 0.001
+
+    expected_result = 2.0
+    result = Quadrature.simpson_integration(func, min_lim, max_lim, delta)
+    assert_in_delta(expected_result, result, 0.001)
+  end
+
 end
