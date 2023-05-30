@@ -2,4 +2,6 @@ module Quadrature
   VERSION: String
   # See the writing guide of rbs: https://github.com/ruby/rbs#guides
   def self.rectangle_integral: -> Float
+
+  def self.trapezoidal_integration: -> Float
 end
