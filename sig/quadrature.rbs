@@ -6,4 +6,7 @@ module Quadrature
   def self.trapezoidal_integration: -> Float
 
   def self.simpson_integration: -> Float
+
+  def self.chebyshev_integration: -> Float
+
 end

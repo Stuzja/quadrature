@@ -156,4 +156,26 @@ class TestQuadrature < Test::Unit::TestCase
     assert_in_delta(expected_result, result, 0.001)
   end
 
+  def test_chebyshev_integration_one
+    func = proc { |x| x**2 }
+    min_lim = 0.0
+    max_lim = 1.0
+    delta = 0.1
+
+    expected_result = 0.3333
+    result = Quadrature.chebyshev_integration(func, min_lim, max_lim, 10)
+    assert_in_delta(expected_result, result, delta)
+  end
+
+
+  def test_chebyshev_integration_two
+    func = proc { |x| Math.exp(-x) }
+    min_lim = 0.0
+    max_lim = 1.0
+    delta = 0.1
+
+    expected_result = 0.6321
+    result = Quadrature.chebyshev_integration(func, min_lim, max_lim, 10)
+    assert_in_delta(expected_result, result, delta)
+  end
 end
